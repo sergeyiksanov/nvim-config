@@ -1,82 +1,50 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+local map = vim.keymap.set
 
--- Пробел + Пробел + r — Перезагрузить конфиг Neovim
-vim.keymap.set("n", "<leader><leader>r", "<cmd>source %<CR>")
-
--- Ctrl + s — Сохранить файл (работает в Normal/Insert/Visual режимах)
-vim.keymap.set({ "n", "i", "v" }, "<C-s>", "<cmd>w<CR>")
-
--- Ctrl + h — Перейти в левое окно
--- Ctrl + j — Перейти в нижнее окно
--- Ctrl + k — Перейти в верхнее окно
--- Ctrl + l — Перейти в правое окно
-vim.keymap.set("n", "<C-h>", "<C-w>h")
-vim.keymap.set("n", "<C-j>", "<C-w>j")
-vim.keymap.set("n", "<C-k>", "<C-w>k")
-vim.keymap.set("n", "<C-l>", "<C-w>l")
-
--- Tab — Автодополнение (в Insert-режиме)
-vim.keymap.set("i", "<Tab>", function()
+-- Base
+map("n", "<Space><Space>r", ":e!<CR>", { desc = "Reload file" })
+map({ "n", "v", "i" }, "<C-s>", "<Esc>:w<CR>", { desc = "Save file" })
+map("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
+map("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
+map("n", "<C-j>", "<C-w>j", { desc = "Move to down window" })
+map("n", "<C-k>", "<C-w>k", { desc = "Move to up window" })
+map("i", "<Tab>", function()
 	return vim.fn.pumvisible() == 1 and "<C-n>" or "<Tab>"
-end, { expr = true })
+end, { expr = true, desc = "Autocompletion" })
+map({ "n", "v" }, "<Space>y", '"+y', { desc = "Copy to system buffer" })
+map("n", "<Space>Y", '"+Y', { desc = "Copy line to system buffer" })
+map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
+map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
+map("n", "<Space>e", ":NvimTreeToggle<CR>", { desc = "Toggle file tree" })
 
--- gd — Перейти к определению символа
--- gD — Перейти к объявлению символа
--- gr — Показать ссылки на символ
--- K — Показать документацию (ховер)
--- Пробел + ca — Вызвать code action
--- Пробел + rn — Переименовать символ
-vim.keymap.set("n", "gd", vim.lsp.buf.definition)
-vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
-vim.keymap.set("n", "gr", vim.lsp.buf.references)
-vim.keymap.set("n", "K", vim.lsp.buf.hover)
-vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
-vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
-
--- Пробел + ff — Поиск файлов
--- Пробел + fg — Поиск текста в проекте
--- Пробел + fb — Поиск открытых буферов
--- Пробел + fh — Поиск в хелпах
--- vim.keymap.set("n", "<leader>ff", builtin.find_files)
--- vim.keymap.set("n", "<leader>fg", builtin.live_grep)
--- vim.keymap.set("n", "<leader>fb", builtin.buffers)
--- vim.keymap.set("n", "<leader>fh", builtin.help_tags)
-
--- Пробел + cf — Отформатировать код
-vim.keymap.set("n", "<leader>cf", function()
+-- LSP
+map("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+map("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
+map("n", "gr", vim.lsp.buf.references, { desc = "Show references" })
+map("n", "K", vim.lsp.buf.hover, { desc = "Show documentation" })
+map("n", "<Space>ca", vim.lsp.buf.code_action, { desc = "Code action" })
+map("n", "<Space>rn", vim.lsp.buf.rename, { desc = "Rename symbol" })
+map("n", "<Space>cf", function()
 	vim.lsp.buf.format({ async = true })
-end)
+end, { desc = "Format code" })
 
--- Пробел + e — Показать/скрыть дерево файлов
-vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>")
+-- Buferline (tabline)
+vim.api.nvim_set_keymap("n", "<Space>1", ":BufferGoto 1<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Space>2", ":BufferGoto 2<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Space>3", ":BufferGoto 3<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Space>4", ":BufferGoto 4<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Space>5", ":BufferGoto 5<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Space>6", ":BufferGoto 6<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Space>7", ":BufferGoto 7<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Space>8", ":BufferGoto 8<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Space>9", ":BufferGoto 9<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Space>bd", ":BufferDelete<CR>", { noremap = true, silent = true })
 
--- Пробел + tn — Новая вкладка
--- Пробел + tc — Закрыть текущую вкладку
--- Пробел + to — Закрыть все вкладки кроме текущей
-vim.keymap.set("n", "<leader>tn", "<cmd>tabnew<CR>")
-vim.keymap.set("n", "<leader>tc", "<cmd>tabclose<CR>")
-vim.keymap.set("n", "<leader>to", "<cmd>tabonly<CR>")
-for i = 1, 9 do
-	vim.keymap.set("n", "<C-" .. i .. ">", function()
-		vim.cmd("tabnext " .. i)
-	end, { desc = "Перейти на вкладку " .. i })
-end
+-- Telescope
+vim.api.nvim_set_keymap("n", "<Space>ff", ":Telescope find_files<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Space>fw", ":Telescope live_grep<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Space>ft", ":Telescope grep_string search=TODO<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Space>fx", ":Telescope grep_string search=FIXME<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Space>fn", ":Telescope grep_string search=NOTE<CR>", { noremap = true, silent = true })
 
--- Перемещение вкладок
-vim.keymap.set("n", "<leader>tmh", "<cmd>-tabmove<CR>", { desc = "Переместить вкладку влево" })
-vim.keymap.set("n", "<leader>tml", "<cmd>+tabmove<CR>", { desc = "Переместить вкладку вправо" })
-
--- J (в Visual) — Переместить выделение вниз
--- K (в Visual) — Переместить выделение вверх
--- n — Поиск следующего совпадения с центрированием
--- N — Поиск предыдущего совпадения с центрированием
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
-
--- Пробел + y — Копировать в системный буфер (Normal/Visual)
--- Пробел + Y — Копировать строку в системный буфер
-vim.keymap.set({ "n", "v" }, "<leader>y", '"+y')
-vim.keymap.set("n", "<leader>Y", '"+Y')
+-- Terminal
+vim.api.nvim_set_keymap("n", "<Space>t", ":ToggleTerm<CR>", { noremap = true, silent = true })
