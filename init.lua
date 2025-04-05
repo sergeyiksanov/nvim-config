@@ -24,6 +24,8 @@ Plug("nvim-telescope/telescope.nvim")
 Plug("akinsho/nvim-bufferline.lua")
 Plug("akinsho/toggleterm.nvim")
 Plug("kdheepak/lazygit.nvim")
+Plug("MunifTanjim/nui.nvim")
+Plug("crnvl96/lazydocker.nvim")
 
 vim.call("plug#end")
 
@@ -46,3 +48,4 @@ require("plugins.conform")
 require("plugins.go")
 require("plugins.telescope")
 require("plugins.terminal")
+require("plugins.lazydocker")

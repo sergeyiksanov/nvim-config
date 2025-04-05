@@ -48,3 +48,9 @@ vim.api.nvim_set_keymap("n", "<Space>fn", ":Telescope grep_string search=NOTE<CR
 
 -- Terminal
 vim.api.nvim_set_keymap("n", "<Space>t", ":ToggleTerm<CR>", { noremap = true, silent = true })
+
+-- Git
+vim.api.nvim_set_keymap("n", "<Space>gg", ":LazyGit<CR>", { noremap = true, silent = true })
+
+-- Docker
+vim.api.nvim_set_keymap("n", "<Space>ld", ":LazyDocker<CR>", { noremap = true, silent = true })
