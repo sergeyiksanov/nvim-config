@@ -30,6 +30,7 @@ Plug("lewis6991/gitsigns.nvim")
 Plug("folke/which-key.nvim")
 Plug("folke/todo-comments.nvim")
 Plug("lukas-reineke/indent-blankline.nvim")
+Plug("windwp/nvim-autopairs")
 
 vim.call("plug#end")
 
@@ -57,3 +58,4 @@ require("plugins.gitsigns")
 require("plugins.whichkey")
 require("plugins.todo_comments")
 require("plugins.indent_blankline")
+require("plugins.autopairs")
