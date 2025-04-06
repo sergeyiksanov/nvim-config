@@ -42,9 +42,10 @@ vim.api.nvim_set_keymap("n", "<Space>bd", ":BufferDelete<CR>", { noremap = true,
 -- Telescope
 vim.api.nvim_set_keymap("n", "<Space>ff", ":Telescope find_files<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<Space>fw", ":Telescope live_grep<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<Space>ft", ":Telescope grep_string search=TODO<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<Space>fx", ":Telescope grep_string search=FIXME<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<Space>fn", ":Telescope grep_string search=NOTE<CR>", { noremap = true, silent = true })
+
+-- Todo comments
+vim.api.nvim_set_keymap("n", "<Space>ft", ":TodoTelescope<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Space>lt", ":TodoQuickFix<CR>", { noremap = true, silent = true })
 
 -- Terminal
 vim.api.nvim_set_keymap("n", "<Space>t", ":ToggleTerm<CR>", { noremap = true, silent = true })

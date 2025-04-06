@@ -3,6 +3,13 @@ local Plug = vim.fn["plug#"]
 
 vim.call("plug#begin")
 
+-- TODO: dawadwda
+-- PERF: wdkwldkwdl
+-- HACK: wdkwldkwdl
+-- NOTE: adwadad
+-- FIX: awwadad
+-- WARNING: adwdaad
+
 Plug("kyazdani42/nvim-tree.lua")
 Plug("kyazdani42/nvim-web-devicons")
 Plug("romgrk/barbar.nvim")
@@ -28,6 +35,7 @@ Plug("MunifTanjim/nui.nvim")
 Plug("crnvl96/lazydocker.nvim")
 Plug("lewis6991/gitsigns.nvim")
 Plug("folke/which-key.nvim")
+Plug("folke/todo-comments.nvim")
 
 vim.call("plug#end")
 
@@ -53,3 +61,4 @@ require("plugins.terminal")
 require("plugins.lazydocker")
 require("plugins.gitsigns")
 require("plugins.whichkey")
+require("plugins.todo_comments")
