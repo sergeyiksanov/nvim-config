@@ -3,13 +3,6 @@ local Plug = vim.fn["plug#"]
 
 vim.call("plug#begin")
 
--- TODO: dawadwda
--- PERF: wdkwldkwdl
--- HACK: wdkwldkwdl
--- NOTE: adwadad
--- FIX: awwadad
--- WARNING: adwdaad
-
 Plug("kyazdani42/nvim-tree.lua")
 Plug("kyazdani42/nvim-web-devicons")
 Plug("romgrk/barbar.nvim")
