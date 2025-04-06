@@ -27,6 +27,7 @@ Plug("kdheepak/lazygit.nvim")
 Plug("MunifTanjim/nui.nvim")
 Plug("crnvl96/lazydocker.nvim")
 Plug("lewis6991/gitsigns.nvim")
+Plug("folke/which-key.nvim")
 
 vim.call("plug#end")
 
@@ -51,3 +52,4 @@ require("plugins.telescope")
 require("plugins.terminal")
 require("plugins.lazydocker")
 require("plugins.gitsigns")
+require("plugins.whichkey")
