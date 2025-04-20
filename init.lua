@@ -3,6 +3,8 @@ local Plug = vim.fn["plug#"]
 
 vim.call("plug#begin")
 
+Plug("nvim-neo-tree/neo-tree.nvim")
+Plug("ryanoasis/vim-devicons")
 Plug("kyazdani42/nvim-tree.lua")
 Plug("kyazdani42/nvim-web-devicons")
 Plug("romgrk/barbar.nvim")
