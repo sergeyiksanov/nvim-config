@@ -55,3 +55,6 @@ vim.api.nvim_set_keymap("n", "<Space>gg", ":LazyGit<CR>", { noremap = true, sile
 
 -- Docker
 vim.api.nvim_set_keymap("n", "<Space>ld", ":LazyDocker<CR>", { noremap = true, silent = true })
+
+-- Dap go
+-- vim.api.nvim_set_keymap("n", "<Space>dg", ":")

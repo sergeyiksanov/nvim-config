@@ -33,6 +33,9 @@ Plug("folke/which-key.nvim")
 Plug("folke/todo-comments.nvim")
 Plug("lukas-reineke/indent-blankline.nvim")
 Plug("windwp/nvim-autopairs")
+Plug("projekt0n/github-nvim-theme")
+Plug("sainnhe/everforest")
+Plug("wakatime/vim-wakatime")
 
 vim.call("plug#end")
 
@@ -40,7 +43,7 @@ home = os.getenv("HOME")
 package.path = home .. "/.config/nvim/?.lua;" .. package.path
 vim.opt.rtp:prepend(vim.fn.stdpath("config") .. "/plugins")
 
-vim.cmd("colorscheme catppuccin-frappe")
+vim.cmd("colorscheme everforest")
 
 require("maps")
 require("common")

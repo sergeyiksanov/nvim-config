@@ -30,7 +30,7 @@ nvim_lsp.pyright.setup({
 	},
 })
 nvim_lsp.ruff.setup({ capabilities = capabilities })
-nvim_lsp.clangd.setup({ capabilities = capabilities })
+-- nvim_lsp.clangd.setup({ capabilities = capabilities })
 nvim_lsp.rust_analyzer.setup({
 	settings = {
 		["rust-analyzer"] = {
