@@ -3,6 +3,8 @@ local Plug = vim.fn["plug#"]
 
 vim.call("plug#begin")
 
+Plug("lervag/vimtex")
+Plug("mistricky/codesnap.nvim", { ["do"] = "make" })
 Plug("nvim-neo-tree/neo-tree.nvim")
 Plug("ryanoasis/vim-devicons")
 Plug("kyazdani42/nvim-tree.lua")
@@ -36,6 +38,9 @@ Plug("windwp/nvim-autopairs")
 Plug("projekt0n/github-nvim-theme")
 Plug("sainnhe/everforest")
 Plug("wakatime/vim-wakatime")
+Plug("jupyter-vim/jupyter-vim")
+Plug("zenbones-theme/zenbones.nvim")
+Plug("rktjmp/lush.nvim")
 
 vim.call("plug#end")
 
@@ -44,6 +49,12 @@ package.path = home .. "/.config/nvim/?.lua;" .. package.path
 vim.opt.rtp:prepend(vim.fn.stdpath("config") .. "/plugins")
 
 vim.cmd("colorscheme everforest")
+-- vim.cmd([[
+--   hi Normal guibg=NONE ctermbg=NONE
+--   hi NormalNC guibg=NONE ctermbg=NONE
+--   hi NvimTreeNormal guibg=NONE
+--   hi NvimTreeEndOfBuffer guibg=NONE
+-- ]])
 
 require("maps")
 require("common")
@@ -64,3 +75,6 @@ require("plugins.whichkey")
 require("plugins.todo_comments")
 require("plugins.indent_blankline")
 require("plugins.autopairs")
+require("plugins.snap")
+require("plugins.tex")
+-- require("plugins.jupyter")

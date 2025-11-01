@@ -10,6 +10,7 @@ require("conform").setup({
 		markdown = { "prettier" },
 		go = { "gofmt", "goimports" },
 		rust = { "rustfmt" },
+		cpp = { "clang_format" },
 	},
 	format_on_save = {
 		timeout_ms = 500,

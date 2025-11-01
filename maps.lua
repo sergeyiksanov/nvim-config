@@ -58,3 +58,7 @@ vim.api.nvim_set_keymap("n", "<Space>ld", ":LazyDocker<CR>", { noremap = true, s
 
 -- Dap go
 -- vim.api.nvim_set_keymap("n", "<Space>dg", ":")
+
+vim.api.nvim_set_keymap("n", "<Space>lc", "\\ll", { noremap = true, silent = true }) -- build
+vim.api.nvim_set_keymap("n", "<Space>lv", "\\lv", { noremap = true, silent = true }) -- view PDF
+vim.api.nvim_set_keymap("n", "<Space>le", "\\le", { noremap = true, silent = true }) -- stop compiler
