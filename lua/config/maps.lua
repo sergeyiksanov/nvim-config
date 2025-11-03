@@ -1,0 +1,20 @@
+local map = vim.keymap.set
+
+map("n", "<Space><Space>r", ":e!<CR>", { desc = "Reload file" })
+map({ "n", "v", "i" }, "<C-s>", "<Esc>:w<CR>", { desc = "Save file" })
+map("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
+map("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
+map("n", "<C-j>", "<C-w>j", { desc = "Move to down window" })
+map("n", "<C-k>", "<C-w>k", { desc = "Move to up window" })
+map("i", "<Tab>", function()
+	return vim.fn.pumvisible() == 1 and "<C-n>" or "<Tab>"
+end, { expr = true, desc = "Autocompletion" })
+map({ "n", "v" }, "<Space>y", '"+y', { desc = "Copy to system buffer" })
+map("n", "<Space>Y", '"+Y', { desc = "Copy line to system buffer" })
+map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
+map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
+map("n", "<Space>e", ":NvimTreeToggle<CR>", { desc = "Toggle file tree" })
+map("i", "jj", function()
+	local keys = vim.api.nvim_replace_termcodes("<Esc>", true, false, true)
+	vim.api.nvim_feedkeys(keys, "i", false)
+end, { desc = "Exit insert mode (jj)" })
